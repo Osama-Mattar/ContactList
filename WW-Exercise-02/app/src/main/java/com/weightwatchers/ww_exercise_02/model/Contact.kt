@@ -1,17 +1,10 @@
 package com.weightwatchers.ww_exercise_02.model
 
-import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class Contact (
-    val name: String,
-    val phoneNumber: String
-) : Parcelable {
-
-    companion object {
-        //TODO Implement the following method:
-        fun isValidNumber(number: String) : Boolean {
-            return false
-        }
-    }
-
-}
+@Entity(tableName = "contacts")
+data class Contact @JvmOverloads constructor(
+        @ColumnInfo(name = "name") var name: String = "",
+        @PrimaryKey @ColumnInfo(name = "msisdn") var msisdn: String = "")
