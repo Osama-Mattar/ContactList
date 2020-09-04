@@ -1,12 +1,12 @@
 # Create Contacts Data layer.
 
-1- Add Room Database as a local data storage.
-2- Create ContactsDao.kt .
-3- Create ContactsRepository.kt .
-4- Add US MSISDN validation at Utils.kt .
-5- Add Hilt for DI.
-6- Create AppModule.kt to tell Hilt how to provide instances.
-7- Add testMsisdnValidation at ContactTest.kt .
+1. Add Room Database as a local data storage.
+2. Create ContactsDao.kt .
+3. Create ContactsRepository.kt .
+4. Add US MSISDN validation at Utils.kt .
+5. Add Hilt for DI.
+6. Create AppModule.kt to tell Hilt how to provide instances.
+7. Add testMsisdnValidation at ContactTest.kt .
 
 
 # Exercise 2
