@@ -12,6 +12,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="uiMode"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,10 +20,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ContactActivity"
-            android:label="@string/title_activity_contact"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 </manifest>
