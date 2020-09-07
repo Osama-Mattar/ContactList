@@ -7,17 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.weightwatchers.ww_exercise_02.R
 import com.weightwatchers.ww_exercise_02.adapter.ContactsAdapter
 import com.weightwatchers.ww_exercise_02.base.BaseFragment
 import com.weightwatchers.ww_exercise_02.databinding.ContactsFragmentBinding
+import com.weightwatchers.ww_exercise_02.utils.setupSnackbar
 
 class ContactsFragment : BaseFragment() {
 
     private val viewModel by viewModels<ContactsViewModel>()
+
+    private val args: ContactsFragmentArgs by navArgs()
 
     private lateinit var viewDataBinding: ContactsFragmentBinding
     private lateinit var listAdapter: ContactsAdapter
@@ -34,6 +39,7 @@ class ContactsFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         // Set the lifecycle owner to the lifecycle of the view
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+        setupSnackbar()
         setupListAdapter()
         setupFab()
     }
@@ -49,6 +55,13 @@ class ContactsFragment : BaseFragment() {
 
     private fun navigateToAddNewContact() {
         findNavController().navigate(R.id.action_contactsFragment_to_addEditContactFragment)
+    }
+
+    private fun setupSnackbar() {
+        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
+        arguments?.let {
+            viewModel.showEditResultMessage(args.userMessage)
+        }
     }
 
     private fun setupListAdapter() {

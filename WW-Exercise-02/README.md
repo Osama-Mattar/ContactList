@@ -38,4 +38,5 @@ You may implement any architecture or use any libraries you feel are necessary. 
 
 * ~~Support dark mode in your design~~
 * ~~Display an empty view when there are no contacts~~
+* ~~Delete Contact / Contacts~~
 * Add additional features you think would be great. Some examples could be search, favorites, etc.

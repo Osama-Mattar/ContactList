@@ -1,5 +1,6 @@
 package com.weightwatchers.ww_exercise_02
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -33,3 +34,7 @@ class MainActivity : AppCompatActivity() {
                 super.onSupportNavigateUp()
     }
 }
+// Keys for navigation
+const val ADD_EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 1
+const val DELETE_RESULT_OK = Activity.RESULT_FIRST_USER + 2
+const val EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 3

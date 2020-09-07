@@ -31,6 +31,9 @@ class AddEditContactViewModel @ViewModelInject constructor(
     private val _contactUpdatedEvent = MutableLiveData<Event<Unit>>()
     val contactUpdatedEvent: LiveData<Event<Unit>> = _contactUpdatedEvent
 
+    private val _deleteContactEvent = MutableLiveData<Event<Unit>>()
+    val deleteContactEvent: LiveData<Event<Unit>> = _deleteContactEvent
+
     private var isNewContact: Boolean = false
 
 
@@ -97,6 +100,13 @@ class AddEditContactViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             contactsRepository.updateContact(contact)
             _contactUpdatedEvent.value = Event(Unit)
+        }
+    }
+
+    fun deleteContact() = viewModelScope.launch {
+        _contactId.value?.let {
+            contactsRepository.deleteContact(it)
+            _deleteContactEvent.value = Event(Unit)
         }
     }
 }

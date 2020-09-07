@@ -1,9 +1,7 @@
 package com.weightwatchers.ww_exercise_02.addeditcontact
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,6 +29,7 @@ class AddEditContactFragment : BaseFragment() {
         // Set the lifecycle owner to the lifecycle of the view
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         viewModel.start(args.msisdn)
+        setHasOptionsMenu(true)
         return viewDataBinding.root
     }
 
@@ -45,8 +44,25 @@ class AddEditContactFragment : BaseFragment() {
     }
 
     private fun setupNavigation() {
+        viewModel.deleteContactEvent.observe(viewLifecycleOwner, EventObserver {
+            findNavController().navigate(R.id.action_addEditContactFragment_to_contactsFragment)
+        })
         viewModel.contactUpdatedEvent.observe(viewLifecycleOwner, EventObserver {
             findNavController().navigate(R.id.action_addEditContactFragment_to_contactsFragment)
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_delete -> {
+                viewModel.deleteContact()
+                true
+            }
+            else -> false
+        }
     }
 }

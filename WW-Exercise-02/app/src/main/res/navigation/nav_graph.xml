@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_contactsFragment_to_addEditContactFragment"
             app:destination="@id/addEditContactFragment" />
+        <argument
+            android:name="userMessage"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addEditContactFragment"
@@ -24,6 +28,9 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="userMessage"
+            android:defaultValue="0" />
         <action
             android:id="@+id/action_addEditContactFragment_to_contactsFragment"
             app:popUpTo="@id/contactsFragment" />

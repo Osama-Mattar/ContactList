@@ -10,4 +10,8 @@
     <string name="invalid_msisdn_message">"Number must be a US phone number "</string>
     <string name="contact_list">Contacts</string>
     <string name="contact">Contact</string>
+    <string name="menu_delete_contact">Delete contact</string>
+    <string name="successfully_saved_contact_message">Contact saved</string>
+    <string name="successfully_added_contact_message">Contact added</string>
+    <string name="successfully_deleted_contact_message">Contact deleted</string>
 </resources>
