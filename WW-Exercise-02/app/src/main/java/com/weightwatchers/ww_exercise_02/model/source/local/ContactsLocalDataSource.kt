@@ -20,14 +20,25 @@ class ContactsLocalDataSource internal constructor(
         }
     }
 
-    override fun observeContactById(msisdn: String): LiveData<Result<Contact>> {
-        return contactsDao.observeContactById(msisdn).map {
-            Success(it)
+    override suspend fun observeContactById(msisdn: String): Result<Contact> = withContext(ioDispatcher) {
+        try {
+            val contact = contactsDao.observeContactById(msisdn)
+            if (contact != null) {
+                return@withContext Success(contact)
+            } else {
+                return@withContext Error(Exception("Contact not found!"))
+            }
+        } catch (e: Exception) {
+            return@withContext Error(e)
         }
-    }
+    } as Result<Contact>
 
     override suspend fun saveContact(contact: Contact) = withContext(ioDispatcher) {
         contactsDao.insertContact(contact)
+    }
+
+    override suspend fun updateContact(contact: Contact) = withContext(ioDispatcher) {
+        contactsDao.updateContact(contact)
     }
 
     override suspend fun deleteAllContacts() = withContext(ioDispatcher) {

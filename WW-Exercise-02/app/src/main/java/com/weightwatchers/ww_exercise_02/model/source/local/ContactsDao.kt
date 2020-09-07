@@ -11,7 +11,7 @@ interface ContactsDao {
     fun observeContacts(): LiveData<List<Contact>>
 
     @Query("SELECT * FROM contacts WHERE msisdn=:msisdn")
-    fun observeContactById(msisdn: String): LiveData<Contact>
+    suspend fun observeContactById(msisdn: String): Contact
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertContact(contact: Contact)

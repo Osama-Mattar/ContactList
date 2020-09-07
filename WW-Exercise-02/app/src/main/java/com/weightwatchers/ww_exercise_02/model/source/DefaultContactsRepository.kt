@@ -13,13 +13,19 @@ class DefaultContactsRepository(
         return contactsLocalDataSource.observeContacts()
     }
 
-    override fun observeContactById(msisdn: String): LiveData<Result<Contact>> {
+    override suspend fun observeContactById(msisdn: String): Result<Contact> {
         return contactsLocalDataSource.observeContactById(msisdn)
     }
 
     override suspend fun saveContact(contact: Contact) {
         coroutineScope {
             launch { contactsLocalDataSource.saveContact(contact) }
+        }
+    }
+
+    override suspend fun updateContact(contact: Contact) {
+        coroutineScope {
+            launch { contactsLocalDataSource.updateContact(contact) }
         }
     }
 

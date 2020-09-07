@@ -8,9 +8,11 @@ interface ContactsRepository {
 
     fun observeContact(): LiveData<Result<List<Contact>>>
 
-    fun observeContactById(msisdn: String): LiveData<Result<Contact>>
+    suspend fun observeContactById(msisdn: String): Result<Contact>
 
     suspend fun saveContact(contact: Contact)
+
+    suspend fun updateContact(contact: Contact)
 
     suspend fun deleteAllContacts()
 
