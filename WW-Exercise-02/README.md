@@ -25,15 +25,15 @@ You may implement any architecture or use any libraries you feel are necessary. 
 
 ### User Stories
 1. Build an app with 2 screens: 
-	- Screen 1: RecyclerView of contacts with a 'add' FAB
-	- Screen 2: New Contact / Edit Contact screen with save button
-1. As a user, I’d like to be able to add a phone number to the list. The process should include validating that the number is a US phone number. If it is, add it to the list. If it is NOT, show a snackbar explaining the error.
-1. As a user, tapping on any of the contacts in the list should send you to the Phone Dialer, with that number ready to dial.
-1. As a user, long pressing any of the contacts in the list should send you to the Edit Contact screen.
-1. Add a unit test to test the phone number validation
+	- ~~ Screen 1: RecyclerView of contacts with a 'add' FAB ~~
+	- ~~ Screen 2: New Contact / Edit Contact screen with save button ~~
+1. ~~ As a user, I’d like to be able to add a phone number to the list. The process should include validating that the number is a US phone number. If it is, add it to the list. If it is NOT, show a snackbar explaining the error. ~~
+1. ~~ As a user, tapping on any of the contacts in the list should send you to the Phone Dialer, with that number ready to dial. ~~
+1. ~~ As a user, long pressing any of the contacts in the list should send you to the Edit Contact screen. ~~
+1. ~~ Add a unit test to test the phone number validation ~~
 
 **Bonus Points**
 
-* Support dark mode in your design
-* Display an empty view when there are no contacts
+* ~~ Support dark mode in your design ~~
+* ~~ Display an empty view when there are no contacts ~~
 * Add additional features you think would be great. Some examples could be search, favorites, etc.

@@ -1,51 +1,35 @@
 package com.weightwatchers.ww_exercise_02
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.widget.Toolbar
-import android.view.View
-import com.weightwatchers.ww_exercise_02.adapter.ContactAdapter
-import com.weightwatchers.ww_exercise_02.model.Contact
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private var contactAdapter: ContactAdapter? = null
 
-    //TODO: Fix & cleanup
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-
-        setupViews()
+        setSupportActionBar(findViewById(R.id.toolbar))
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController: NavController = navHostFragment.navController
+        appBarConfiguration =
+                AppBarConfiguration.Builder(R.id.contactsFragment)
+                        .build()
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        contactAdapter = ContactAdapter()
-
-        addFakeContact()
-    }
-
-    private fun setupViews() {
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
-
-        val recyclerView = findViewById<View>(R.id.recycler_view) as RecyclerView
-        recyclerView.adapter = contactAdapter
-
-        val addContactButton = findViewById<View>(R.id.add_contact) as FloatingActionButton
-        addContactButton.setOnClickListener {
-            // TODO Send user to ContactActivity
-        }
-    }
-
-    private fun addFakeContact() {
-        val contact = Contact("Average Joe", "800-123-5542")
-
-        contactAdapter!!.add(contact)
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration) ||
+                super.onSupportNavigateUp()
     }
 }

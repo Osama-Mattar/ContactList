@@ -1,9 +1,10 @@
 package com.weightwatchers.ww_exercise_02.adapter
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import android.view.View
-import android.widget.TextView
-import com.weightwatchers.ww_exercise_02.R
+import com.weightwatchers.ww_exercise_02.contacts.ContactsViewModel
+import com.weightwatchers.ww_exercise_02.databinding.LayoutContactBinding
 import com.weightwatchers.ww_exercise_02.model.Contact
 
 /**
@@ -12,19 +13,20 @@ import com.weightwatchers.ww_exercise_02.model.Contact
  * - contactNameView = the contact's name
  * - phoneNumberView = the contact's phone phoneNumber
  */
-class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ContactViewHolder private constructor(val binding: LayoutContactBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    var contactNumberView: TextView
-    var contactNameView: TextView
-    var phoneNumberView: TextView
-
-    init {
-        contactNumberView = itemView.findViewById(R.id.contact_number) as TextView
-        contactNameView = itemView.findViewById(R.id.contact_name) as TextView
-        phoneNumberView = itemView.findViewById(R.id.contact_phone_number) as TextView
+    fun bind(viewModel: ContactsViewModel, contact: Contact) {
+        binding.viewmodel = viewModel
+        binding.contact = contact
+        binding.executePendingBindings()
     }
 
-    fun bind(contact: Contact) {
-        //TODO Bind contact with views
+    companion object {
+        fun from(parent: ViewGroup): ContactViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val binding = LayoutContactBinding.inflate(layoutInflater, parent, false)
+
+            return ContactViewHolder(binding)
+        }
     }
 }
