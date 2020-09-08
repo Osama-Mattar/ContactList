@@ -54,7 +54,8 @@ class ContactsFragment : BaseFragment() {
     }
 
     private fun navigateToAddNewContact() {
-        findNavController().navigate(R.id.action_contactsFragment_to_addEditContactFragment)
+        val action = ContactsFragmentDirections.actionContactsFragmentToAddEditContactFragment(null, resources.getString(R.string.add_contact))
+        findNavController().navigate(action)
     }
 
     private fun setupSnackbar() {

@@ -14,4 +14,5 @@
     <string name="successfully_saved_contact_message">Contact saved</string>
     <string name="successfully_added_contact_message">Contact added</string>
     <string name="successfully_deleted_contact_message">Contact deleted</string>
+    <string name="add_contact">New Contact</string>
 </resources>

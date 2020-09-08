@@ -27,7 +27,7 @@ class ContactsAdapter(private val viewModel: ContactsViewModel) :
             it.context.startActivity(intent)
         }
         holder.itemView.setOnLongClickListener {
-            val action = ContactsFragmentDirections.actionContactsFragmentToAddEditContactFragment(contact.msisdn)
+            val action = ContactsFragmentDirections.actionContactsFragmentToAddEditContactFragment(contact.msisdn, contact.name)
             it.findNavController().navigate(action)
             return@setOnLongClickListener true
         }

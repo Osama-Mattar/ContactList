@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
+import com.weightwatchers.ww_exercise_02.ADD_EDIT_RESULT_OK
+import com.weightwatchers.ww_exercise_02.DELETE_RESULT_OK
 import com.weightwatchers.ww_exercise_02.EventObserver
 import com.weightwatchers.ww_exercise_02.R
 import com.weightwatchers.ww_exercise_02.base.BaseFragment
@@ -44,12 +46,8 @@ class AddEditContactFragment : BaseFragment() {
     }
 
     private fun setupNavigation() {
-        viewModel.deleteContactEvent.observe(viewLifecycleOwner, EventObserver {
-            findNavController().navigate(R.id.action_addEditContactFragment_to_contactsFragment)
-        })
-        viewModel.contactUpdatedEvent.observe(viewLifecycleOwner, EventObserver {
-            findNavController().navigate(R.id.action_addEditContactFragment_to_contactsFragment)
-        })
+        addEditContactNav()
+        deleteContactNav()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -64,5 +62,21 @@ class AddEditContactFragment : BaseFragment() {
             }
             else -> false
         }
+    }
+
+    fun deleteContactNav() {
+        viewModel.deleteContactEvent.observe(viewLifecycleOwner, EventObserver {
+            val action = AddEditContactFragmentDirections
+                    .actionAddEditContactFragmentToContactsFragment2(DELETE_RESULT_OK)
+            findNavController().navigate(action)
+        })
+    }
+
+    fun addEditContactNav() {
+        viewModel.contactUpdatedEvent.observe(viewLifecycleOwner, EventObserver {
+            val action = AddEditContactFragmentDirections
+                    .actionAddEditContactFragmentToContactsFragment2(ADD_EDIT_RESULT_OK)
+            findNavController().navigate(action)
+        })
     }
 }
