@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/addEditContactFragment"
         android:name="com.weightwatchers.ww_exercise_02.addeditcontact.AddEditContactFragment"
-        android:label="@string/contact"
+        android:label="{title}"
         tools:layout="@layout/add_edit_contact_fragment">
         <argument
             android:name="msisdn"
@@ -29,10 +29,17 @@
             app:argType="string"
             app:nullable="true" />
         <argument
-            android:name="userMessage"
-            android:defaultValue="0" />
+            android:name="title"
+            app:argType="string"
+            app:nullable="false" />
         <action
             android:id="@+id/action_addEditContactFragment_to_contactsFragment"
             app:popUpTo="@id/contactsFragment" />
+        <action
+            android:id="@+id/action_addEditContactFragment_to_contactsFragment2"
+            app:destination="@id/contactsFragment" />
     </fragment>
+    <argument
+        android:name="userMessage"
+        android:defaultValue="0" />
 </navigation>
