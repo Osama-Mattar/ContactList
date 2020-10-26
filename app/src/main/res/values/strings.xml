@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Contact List</string>
+
+    <string name="title_activity_main">Contact List</string>
+    <string name="title_activity_contact">Contact Editor</string>
+    <string name="no_contacts">You have no contacts!</string>
+    <string name="no_contacts_image_content_description">No contacts image</string>
+    <string name="loading_contacts_error">Error while loading contacts</string>
+    <string name="empty_contact_message">Contact cannot be empty</string>
+    <string name="invalid_msisdn_message">"Number must be a US phone number "</string>
+    <string name="contact_list">Contacts</string>
+    <string name="contact">Contact</string>
+    <string name="menu_delete_contact">Delete contact</string>
+    <string name="successfully_saved_contact_message">Contact saved</string>
+    <string name="successfully_added_contact_message">Contact added</string>
+    <string name="successfully_deleted_contact_message">Contact deleted</string>
+    <string name="add_contact">New Contact</string>
+</resources>
